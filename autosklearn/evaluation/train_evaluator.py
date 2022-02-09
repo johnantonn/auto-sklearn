@@ -352,11 +352,12 @@ class TrainEvaluator(AbstractEvaluator):
 
                         # Compute train loss of this fold and store it. train_loss could
                         # either be a scalar or a dict of scalars with metrics as keys.
-                        train_loss = self._loss(
-                            self.Y_train.iloc[train_indices] if hasattr(
-                                self.Y_train, 'iloc') else self.Y_train[train_indices],
-                            train_pred,
-                        )
+                        #train_loss = self._loss(
+                        #    self.Y_train.iloc[train_indices] if hasattr(
+                        #        self.Y_train, 'iloc') else self.Y_train[train_indices],
+                        #    train_pred,
+                        #)
+                        train_loss = 1.
                         train_losses[i] = train_loss
                         # number of training data points for this fold. Used for weighting
                         # the average.
@@ -543,10 +544,11 @@ class TrainEvaluator(AbstractEvaluator):
 
                 # Compute train loss of this fold and store it. train_loss could
                 # either be a scalar or a dict of scalars with metrics as keys.
-                train_loss = self._loss(
-                    self.Y_train_targets[train_split],
-                    train_pred,
-                )
+                #train_loss = self._loss(
+                #    self.Y_train_targets[train_split],
+                #    train_pred,
+                #)
+                train_loss = 1.
                 train_losses.append(train_loss)
                 # number of training data points for this fold. Used for weighting
                 # the average.
@@ -698,7 +700,8 @@ class TrainEvaluator(AbstractEvaluator):
                     add_model_to_self=True,
                 )
             )
-            train_loss = self._loss(self.Y_actual_train, train_pred)
+            #train_loss = self._loss(self.Y_actual_train, train_pred)
+            train_loss = 1.
             loss = self._loss(self.Y_targets[fold], opt_pred)
 
             if self.model.estimator_supports_iterative_fit():
@@ -782,11 +785,12 @@ class TrainEvaluator(AbstractEvaluator):
                 if add_model_to_self:
                     self.model = model
 
-                train_loss = self._loss(
-                    self.Y_train.iloc[train_indices] if hasattr(
-                        self.Y_train, 'iloc') else self.Y_train[train_indices],
-                    Y_train_pred
-                )
+                #train_loss = self._loss(
+                #    self.Y_train.iloc[train_indices] if hasattr(
+                #        self.Y_train, 'iloc') else self.Y_train[train_indices],
+                #    Y_train_pred
+                #)
+                train_loss = 1.
                 loss = self._loss(self.Y_train[test_indices], Y_optimization_pred)
                 additional_run_info = model.get_additional_run_info()
 
@@ -825,11 +829,12 @@ class TrainEvaluator(AbstractEvaluator):
                 additional_run_info
             ) = self._partial_fit_and_predict_standard(fold, train_indices, test_indices,
                                                        add_model_to_self)
-            train_loss = self._loss(
-                self.Y_train.iloc[train_indices] if hasattr(
-                    self.Y_train, 'iloc') else self.Y_train[train_indices],
-                Y_train_pred
-            )
+            #train_loss = self._loss(
+            #    self.Y_train.iloc[train_indices] if hasattr(
+            #        self.Y_train, 'iloc') else self.Y_train[train_indices],
+            #    Y_train_pred
+            #)
+            train_loss = 1.
             loss = self._loss(self.Y_train[test_indices], Y_optimization_pred)
             if self.model.estimator_supports_iterative_fit():
                 model_max_iter = self.model.get_max_iter()
