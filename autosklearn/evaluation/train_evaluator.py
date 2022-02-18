@@ -357,7 +357,7 @@ class TrainEvaluator(AbstractEvaluator):
                                 self.Y_train.iloc[train_indices] if hasattr(
                                     self.Y_train, 'iloc') else self.Y_train[train_indices],
                                 train_pred,
-                        )
+                            )
                         else:
                             train_loss = 1.
                         train_losses[i] = train_loss
