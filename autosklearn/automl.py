@@ -1649,7 +1649,7 @@ class AutoML(BaseEstimator):
             # Drop single_best_train_score column
             individual_performance_frame.drop(['single_best_train_score'], axis=1, inplace=True)
             best_values = pd.Series({'single_best_optimization_score': -np.inf,
-                                     'single_best_test_score': -np.inf,})
+                                     'single_best_test_score': -np.inf})
         for idx in individual_performance_frame.index:
             if (
                 individual_performance_frame.loc[idx, 'single_best_optimization_score']
