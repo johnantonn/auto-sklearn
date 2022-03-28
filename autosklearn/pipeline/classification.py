@@ -307,9 +307,10 @@ class SimpleClassificationPipeline(BasePipeline, ClassifierMixin):
                     dataset_properties=default_dataset_properties,
                     random_state=self.random_state)
             ],
-            [
-                "balancing", Balancing(random_state=self.random_state)
-            ],
+            # Disabling balancing strategy
+            # [
+            #    "balancing", Balancing(strategy='none', random_state=self.random_state)
+            # ],
             [
                 "feature_preprocessor", FeaturePreprocessorChoice(
                     dataset_properties=default_dataset_properties,
